@@ -1,0 +1,22 @@
+services:
+  myllm:
+    build: ./myLLM/.
+    restart: unless-stopped
+    container_name: myllm
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    # you can set a lot of parameters. A brief description of the parameters we use here:
+    # -- model: the model we want to use. In this case it is 'facebook/opt-125m'
+    # -- swap-space: the amount of swap space to use. In this case it is 2Gb
+    command: "python3 -m vllm.entrypoints.openai.api_server --model facebook/opt-125m --swap-space 2.0"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [ gpu ]  # This requests GPU support for the container
+          memory: 4g
+    # Optional environment variables (for CUDA, etc.)
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all  # Make all GPUs visible to the container
+      - HUGGING_FACE_HUB_TOKEN=<your HuggingFace token>
