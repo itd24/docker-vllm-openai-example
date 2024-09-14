@@ -22,4 +22,4 @@ services:
     # Optional environment variables (for CUDA, etc.)
     environment:
       - NVIDIA_VISIBLE_DEVICES=all  # Make all GPUs visible to the container
-      - HUGGING_FACE_HUB_TOKEN=<your HuggingFace token>
+      - HUGGING_FACE_HUB_TOKEN=<your HuggingFace token> # if you want to use a model, that requires a HuggingFace account, you need to set your access token here
