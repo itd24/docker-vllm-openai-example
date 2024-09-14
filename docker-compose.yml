@@ -7,9 +7,12 @@ services:
     ports:
       - "8000:8000"
     # you can set a lot of parameters. A brief description of the parameters we use here:
-    # -- model: the model we want to use. In this case it is 'facebook/opt-125m'
+    # -- model: the model we want to use. In this case it is 'NousResearch/Meta-Llama-3-8B-Instruct'
     # -- swap-space: the amount of swap space to use. In this case it is 2Gb
-    command: "python3 -m vllm.entrypoints.openai.api_server --model facebook/opt-125m --swap-space 2.0"
+    # -- dtype: the data type to use. In this case it is 'half'
+    # -- max-model-length: the maximum length of the model. In this case it is 2048
+    # -- api-key: the API key that will be needed to make requests. In this case it is 'my-unique-api-key'
+    command: "vllm serve --model NousResearch/Meta-Llama-3-8B-Instruct --swap-space 2.0 --dtype=half --max-model-length 2048 --api-key my-unique-api-key"
     deploy:
       resources:
         reservations:
