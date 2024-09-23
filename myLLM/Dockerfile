@@ -10,4 +10,4 @@ EXPOSE 8000
 # we set the data type (dtype) to half precision
 # we set the maximum model length to 2048 tokens which means we will use less resources
 # we set the swap space to 2.0 GB
-CMD ["--model", "NousResearch/Meta-Llama-3-8B-Instruct", "--api-key", "my-unique-api-key", "--swap-space", "2.0", "--dtype", "half", "--max-model-len", "2048", "--port", "8000"]
+CMD ["NousResearch/Meta-Llama-3-8B-Instruct", "--api-key", "my-unique-api-key", "--swap-space", "2.0", "--dtype", "half", "--max-model-len", "2048", "--port", "8000"]
