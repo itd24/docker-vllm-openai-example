@@ -2,7 +2,7 @@ services:
   myllm:
     build: ./myLLM/.
     restart: unless-stopped
-    container_name: myllm2
+    container_name: myllm
     working_dir: /app
     ports:
       - "8000:8000"
@@ -12,12 +12,12 @@ services:
     # -- dtype: the data type to use. In this case it is 'half'
     # -- max-model-length: the maximum length of the model. In this case it is 2048
     # -- api-key: the API key that will be needed to make requests. In this case it is 'my-unique-api-key'
-    command: "--model NousResearch/Meta-Llama-3-8B-Instruct --swap-space 2.0 --dtype=half --max-model-len 2048 --api-key my-unique-api-key"
+    command: "NousResearch/Meta-Llama-3-8B-Instruct --swap-space 2.0 --dtype=half --max-model-len 2048 --api-key my-unique-api-key"
     deploy:
       resources:
         reservations:
-#          devices:
-#            - capabilities: [ gpu ]  # This requests GPU support for the container
+          devices:
+            - capabilities: [ gpu ]  # This requests GPU support for the container
           memory: 4g
     # Optional environment variables (for CUDA, etc.)
     environment:

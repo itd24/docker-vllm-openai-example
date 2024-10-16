@@ -4,8 +4,6 @@ FROM vllm/vllm-openai:latest
 # Expose port 8000
 EXPOSE 8000
 
-ENV CUDA_VISIBLE_DEVICES=""
-
 # Command to run the vLLM server with the specified model and parameters
 # we set the model name to the model we want to use
 # we set our unique api key, so requests will be safe
